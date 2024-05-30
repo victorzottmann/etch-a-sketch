@@ -1,0 +1,59 @@
+:root {
+  --clr-red: #eb5c47;
+  --clr-white: #fff;
+  --clr-grid: rgba(0, 0, 0, 0.2);
+
+  --board-width: 700px;
+  --board-height: 700px;
+  --screen-width: 520px;
+  --screen-height: 520px;
+
+  --ff-primary: "Mochiy Pop One", sans-serif;
+}
+
+.container {
+  background-color: var(--clr-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--clr-red);
+  width: var(--board-width);
+  height: var(--board-height);
+  border-radius: 30px;
+}
+
+.title {
+  font-family: var(--ff-primary);
+  font-size: 2rem;
+  color: var(--clr-white);
+}
+
+.screen {
+  background-color: var(--clr-white);
+  width: var(--screen-width);
+  height: var(--screen-height);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: var(--screen-width);
+}
+
+.btn {
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--ff-primary);
+  color: var(--clr-red);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+}
