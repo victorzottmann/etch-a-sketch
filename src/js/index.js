@@ -1,3 +1,5 @@
+import { populateGrid } from "./utils.js";
+
 const container = document.querySelector(".container");
 
 const board = document.createElement("div");
@@ -10,12 +12,7 @@ title.classList.add("title");
 
 const grid = document.createElement("div");
 grid.classList.add("grid");
-
-for (let i = 0; i < 15 * 15; i++) {
-  const square = document.createElement("div");
-  square.classList.add("square");
-  grid.appendChild(square);
-}
+populateGrid(grid);
 
 const buttons = document.createElement("div");
 buttons.classList.add("buttons");
