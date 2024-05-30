@@ -5,8 +5,8 @@
 
   --board-width: 700px;
   --board-height: 700px;
-  --screen-width: 520px;
-  --screen-height: 520px;
+  --screen-width: 500px;
+  --screen-height: 500px;
 
   --ff-primary: "Mochiy Pop One", sans-serif;
 }
@@ -36,10 +36,19 @@
   color: var(--clr-white);
 }
 
-.screen {
+.grid {
   background-color: var(--clr-white);
   width: var(--screen-width);
   height: var(--screen-height);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.square {
+  flex-grow: 1;
+  width: calc(var(--screen-width) / 16);
+  height: calc((var(--screen-height) / 16));
+  border: 1px solid var(--clr-grid);
 }
 
 .buttons {

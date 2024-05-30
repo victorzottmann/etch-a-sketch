@@ -8,8 +8,14 @@ const title = document.createElement("h1");
 title.textContent = "Etch A Sketch";
 title.classList.add("title");
 
-const screen = document.createElement("div");
-screen.classList.add("screen");
+const grid = document.createElement("div");
+grid.classList.add("grid");
+
+for (let i = 0; i < 15 * 15; i++) {
+  const square = document.createElement("div");
+  square.classList.add("square");
+  grid.appendChild(square);
+}
 
 const buttons = document.createElement("div");
 buttons.classList.add("buttons");
@@ -33,5 +39,5 @@ clearBtn.textContent = "Clear";
 buttons.appendChild(clearBtn);
 
 board.appendChild(title);
-board.appendChild(screen);
+board.appendChild(grid);
 board.appendChild(buttons);
