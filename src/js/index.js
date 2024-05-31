@@ -1,4 +1,4 @@
-import { populateGrid } from "./utils.js";
+import { populateGrid, paintGrid } from "./utils.js";
 
 const container = document.querySelector(".container");
 
@@ -38,3 +38,5 @@ buttons.appendChild(clearBtn);
 board.appendChild(title);
 board.appendChild(grid);
 board.appendChild(buttons);
+
+paintGrid();

@@ -5,3 +5,12 @@ export function populateGrid(container) {
     container.appendChild(square);
   }
 }
+
+export function paintGrid() {
+  const squares = document.querySelectorAll(".square");
+  squares.forEach(s => {
+    s.addEventListener("mouseover", () => {
+      s.style.backgroundColor = "#000";
+    });
+  });
+};
