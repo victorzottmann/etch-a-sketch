@@ -14,3 +14,11 @@ export function paintGrid() {
     });
   });
 };
+
+export function clearGrid() {
+  const clearBtn = document.querySelector(".btn-clear");
+  const squares = document.querySelectorAll(".square");
+  clearBtn.addEventListener("click", () => {
+    squares.forEach(s => s.style.backgroundColor = "#fff");
+  })
+}
