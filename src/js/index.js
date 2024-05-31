@@ -1,5 +1,7 @@
 import { populateGrid, paintGrid, clearGrid } from "./utils.js";
 
+let currentColor = "var(--clr-grid)";
+
 const container = document.querySelector(".container");
 
 const board = document.createElement("div");
@@ -17,10 +19,15 @@ populateGrid(grid);
 const buttons = document.createElement("div");
 buttons.classList.add("buttons");
 
+const colorInput = document.createElement("input");
+colorInput.setAttribute("type", "color");
+colorInput.style.display = "none";
+buttons.appendChild(colorInput);
+
 const colorBtn = document.createElement("button");
 colorBtn.classList.add("btn");
 colorBtn.classList.add("btn-color");
-colorBtn.textContent = "Color"
+colorBtn.textContent = "Color";
 buttons.appendChild(colorBtn);
 
 const gridSizeBtn = document.createElement("button");
@@ -39,5 +46,17 @@ board.appendChild(title);
 board.appendChild(grid);
 board.appendChild(buttons);
 
-paintGrid();
-clearGrid();
+colorBtn.addEventListener("click", () => {
+  colorInput.click();
+});
+
+colorInput.addEventListener("change", (e) => {
+  currentColor = e.target.value;
+  paintGrid(currentColor);
+});
+
+clearBtn.addEventListener("click", () => {
+  clearGrid();
+});
+
+paintGrid(currentColor);

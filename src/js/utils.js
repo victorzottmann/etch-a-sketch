@@ -6,19 +6,16 @@ export function populateGrid(container) {
   }
 }
 
-export function paintGrid() {
+export function paintGrid(color) {
   const squares = document.querySelectorAll(".square");
   squares.forEach(s => {
     s.addEventListener("mouseover", () => {
-      s.style.backgroundColor = "#000";
+      s.style.backgroundColor = color;
     });
   });
 };
 
 export function clearGrid() {
-  const clearBtn = document.querySelector(".btn-clear");
   const squares = document.querySelectorAll(".square");
-  clearBtn.addEventListener("click", () => {
-    squares.forEach(s => s.style.backgroundColor = "#fff");
-  })
+  squares.forEach(s => s.style.backgroundColor = "var(--clr-white)");
 }
