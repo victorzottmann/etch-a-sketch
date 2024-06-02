@@ -1,6 +1,7 @@
 import { populateGrid, paintGrid, clearGrid } from "./utils.js";
 
 let currentColor = "var(--clr-grid)";
+let gridSize = 24;
 
 const container = document.querySelector(".container");
 
@@ -14,7 +15,7 @@ title.classList.add("title");
 
 const grid = document.createElement("div");
 grid.classList.add("grid");
-populateGrid(grid);
+populateGrid(grid, gridSize);
 
 const buttons = document.createElement("div");
 buttons.classList.add("buttons");
@@ -56,7 +57,7 @@ colorInput.addEventListener("change", (e) => {
 });
 
 clearBtn.addEventListener("click", () => {
-  clearGrid();
+  clearGrid(grid);
 });
 
 paintGrid(currentColor);

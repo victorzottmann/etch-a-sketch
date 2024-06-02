@@ -1,15 +1,19 @@
 :root {
   --clr-red: #eb5c47;
   --clr-white: #fff;
-  --clr-grid: #00000033;
+  --clr-grid: #0000001e;
   --clr-bg: #23395b;
 
   --board-width: 700px;
   --board-height: 700px;
-  --screen-width: 500px;
-  --screen-height: 500px;
+  --grid-width: 500px;
+  --grid-height: 500px;
 
   --ff-primary: "Mochiy Pop One", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .container {
@@ -40,23 +44,23 @@
 
 .grid {
   background-color: var(--clr-white);
-  width: var(--screen-width);
-  height: var(--screen-height);
+  width: var(--grid-width);
+  height: var(--grid-height);
   display: flex;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
-.square {
-  flex-grow: 1;
-  width: calc(var(--screen-width) / 16);
-  height: calc((var(--screen-height) / 16));
+.grid-item {
+  flex: 1 0 calc(100% / var(--grid-size));
+  height: calc(100% / var(--grid-size));
   border: 1px solid var(--clr-grid);
 }
 
 .buttons {
   display: flex;
   justify-content: space-between;
-  width: var(--screen-width);
+  width: var(--grid-width);
 }
 
 .btn {
