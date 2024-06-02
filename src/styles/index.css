@@ -1,7 +1,8 @@
 :root {
   --clr-red: #eb5c47;
   --clr-white: #fff;
-  --clr-grid: rgba(0, 0, 0, 0.2);
+  --clr-grid: #00000033;
+  --clr-bg: #23395b;
 
   --board-width: 700px;
   --board-height: 700px;
@@ -12,7 +13,7 @@
 }
 
 .container {
-  background-color: var(--clr-white);
+  background-color: var(--clr-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
