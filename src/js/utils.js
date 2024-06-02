@@ -1,4 +1,4 @@
-export function populateGrid(container, size) {
+export function populateGrid(container, size = 16) {
   for (let i = 0; i < size * size; i++) {
     const gridItem = document.createElement("div");
     gridItem.classList.add("grid-item");

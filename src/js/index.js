@@ -1,8 +1,5 @@
 import { populateGrid, paintGrid, clearGrid } from "./utils.js";
 
-let currentColor = "var(--clr-grid)";
-let gridSize = 24;
-
 const container = document.querySelector(".container");
 
 const board = document.createElement("div");
@@ -15,7 +12,6 @@ title.classList.add("title");
 
 const grid = document.createElement("div");
 grid.classList.add("grid");
-populateGrid(grid, gridSize);
 
 const buttons = document.createElement("div");
 buttons.classList.add("buttons");
@@ -47,6 +43,11 @@ board.appendChild(title);
 board.appendChild(grid);
 board.appendChild(buttons);
 
+populateGrid(grid);
+
+let currentColor = "var(--clr-grid)"; // css variable
+paintGrid(currentColor);
+
 colorBtn.addEventListener("click", () => {
   colorInput.click();
 });
@@ -57,7 +58,18 @@ colorInput.addEventListener("change", (e) => {
 });
 
 clearBtn.addEventListener("click", () => {
-  clearGrid(grid);
+  clearGrid();
 });
 
-paintGrid(currentColor);
+gridSizeBtn.addEventListener("click", () => {
+  const size = prompt("Enter a new grid size:");
+  
+  if (!size || isNaN(size)) {
+    alert("Invalid input. Please enter a valid number");
+    return;
+  }
+
+  clearGrid();
+  populateGrid(grid, parseInt(size));
+  paintGrid(currentColor);
+});
