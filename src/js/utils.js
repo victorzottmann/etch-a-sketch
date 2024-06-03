@@ -52,7 +52,7 @@ function showInvalidInputMessage(size) {
   const message = document.querySelector("small");
   const input = document.querySelector(".menu-grid-input");
 
-  message.style.display = "block";
+  message.style.display = "inline";
   input.style.backgroundColor = "var(--clr-red)";
   input.style.color = "var(--clr-white)";
   
