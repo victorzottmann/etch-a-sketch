@@ -1,5 +1,6 @@
 import { populateGrid, paintGrid, clearGrid } from "./utils.js";
 
+const defaultGridSize = 16;
 let currentColor = "#d4d4d4";
 
 const container = document.querySelector(".container");
@@ -43,7 +44,8 @@ gridSizeInput.setAttribute("type", "text");
 gridSizeInput.setAttribute("min", 1);
 gridSizeInput.setAttribute("max", 100);
 gridSizeInput.classList.add("menu-grid-input");
-gridSizeInput.value = 16;
+gridSizeInput.value = defaultGridSize;
+console.log(gridSizeInput.value)
 
 const gridSizeBtn = document.createElement("button");
 gridSizeBtn.textContent = "Set";
@@ -53,7 +55,12 @@ gridSizeBtn.classList.add("btn-grid-size");
 gridSizeInputContainer.appendChild(gridSizeInput);
 gridSizeInputContainer.appendChild(gridSizeBtn);
 
-menuGrid.appendChild(gridSizeInputContainer)
+const invalidInputMessage = document.createElement("small");
+invalidInputMessage.textContent = "WARNING: Value must be within 1 and 100!";
+invalidInputMessage.classList.add("invalid-input-message");
+
+menuGrid.appendChild(gridSizeInputContainer);
+menuGrid.appendChild(invalidInputMessage);
 
 menu.appendChild(menuColor);
 menu.appendChild(menuGrid);
@@ -94,9 +101,55 @@ clearBtn.addEventListener("click", () => {
   clearGrid();
 });
 
+gridSizeInput.addEventListener("click", () => {
+  gridSizeInput.style.color = "var(--clr-white)";
+  gridSizeInput.style.backgroundColor = "var(--clr-bg)";
+  hideInvalidInputMessage();
+});
+
+gridSizeInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    gridSizeBtn.click();
+    gridSizeInput.blur();
+    handleGridSizeChange();
+  }
+});
+
 gridSizeBtn.addEventListener("click", () => {
+  handleGridSizeChange();
+});
+
+function handleGridSizeChange() {
   const size = parseInt(gridSizeInput.value);
+
+  if (isNaN(size) || size < 1 || size > 100) {
+    showInvalidInputMessage(size);
+    return;
+  }
+
+  hideInvalidInputMessage();
+
   clearGrid();
   populateGrid(grid, parseInt(size));
   paintGrid(currentColor);
-});
+}
+
+function showInvalidInputMessage(size) {
+  const message = document.querySelector("small");
+
+  message.style.display = "block";
+  gridSizeInput.style.backgroundColor = "var(--clr-red)";
+  gridSizeInput.style.color = "var(--clr-white)";
+  
+  if (isNaN(size)) {
+    gridSizeInput.style.backgroundColor = "var(--clr-bg)";
+    message.textContent = "Input cannot be empty!";
+  } else {
+    message.textContent = "WARNING: Value must be within 1 and 100!";
+  }
+}
+
+function hideInvalidInputMessage() {
+  const message = document.querySelector("small");
+  message.style.display = "none";
+}
