@@ -11,10 +11,10 @@ container.appendChild(menu);
 const menuColor = document.createElement("div");
 menuColor.classList.add("menu-color")
 
-const colorText = document.createElement("p");
-colorText.textContent = "Color";
-colorText.classList.add("menu-color-text");
-menuColor.appendChild(colorText);
+const colorHeading = document.createElement("p");
+colorHeading.textContent = "Color";
+colorHeading.classList.add("menu-heading");
+menuColor.appendChild(colorHeading);
 
 const colorPicker = document.createElement("input");
 colorPicker.setAttribute("type", "color");
