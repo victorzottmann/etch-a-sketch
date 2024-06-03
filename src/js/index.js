@@ -45,7 +45,6 @@ gridSizeInput.setAttribute("min", 1);
 gridSizeInput.setAttribute("max", 100);
 gridSizeInput.classList.add("menu-grid-input");
 gridSizeInput.value = defaultGridSize;
-console.log(gridSizeInput.value)
 
 const gridSizeBtn = document.createElement("button");
 gridSizeBtn.textContent = "Set";
