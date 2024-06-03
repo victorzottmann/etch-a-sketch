@@ -1,6 +1,28 @@
 import { populateGrid, paintGrid, clearGrid } from "./utils.js";
 
+let currentColor = "#d4d4d4";
+
 const container = document.querySelector(".container");
+
+const menu = document.createElement("div");
+menu.classList.add("menu");
+container.appendChild(menu);
+
+const menuColor = document.createElement("div");
+menuColor.classList.add("menu-color")
+
+const colorText = document.createElement("p");
+colorText.textContent = "Color";
+colorText.classList.add("menu-color-text");
+menuColor.appendChild(colorText);
+
+const colorPicker = document.createElement("input");
+colorPicker.setAttribute("type", "color");
+colorPicker.classList.add("menu-color-picker");
+colorPicker.value = currentColor;
+menuColor.appendChild(colorPicker);
+
+menu.appendChild(menuColor);
 
 const board = document.createElement("div");
 board.classList.add("board");
@@ -15,17 +37,6 @@ grid.classList.add("grid");
 
 const buttons = document.createElement("div");
 buttons.classList.add("buttons");
-
-const colorInput = document.createElement("input");
-colorInput.setAttribute("type", "color");
-colorInput.style.display = "none";
-buttons.appendChild(colorInput);
-
-const colorBtn = document.createElement("button");
-colorBtn.classList.add("btn");
-colorBtn.classList.add("btn-color");
-colorBtn.textContent = "Color";
-buttons.appendChild(colorBtn);
 
 const gridSizeBtn = document.createElement("button");
 gridSizeBtn.classList.add("btn");
@@ -44,15 +55,9 @@ board.appendChild(grid);
 board.appendChild(buttons);
 
 populateGrid(grid);
-
-let currentColor = "var(--clr-grid)"; // css variable
 paintGrid(currentColor);
 
-colorBtn.addEventListener("click", () => {
-  colorInput.click();
-});
-
-colorInput.addEventListener("change", (e) => {
+colorPicker.addEventListener("change", (e) => {
   currentColor = e.target.value;
   paintGrid(currentColor);
 });
@@ -71,5 +76,4 @@ gridSizeBtn.addEventListener("click", () => {
 
   clearGrid();
   populateGrid(grid, parseInt(size));
-  paintGrid(currentColor);
 });
