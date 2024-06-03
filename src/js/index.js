@@ -30,11 +30,30 @@ gridSizeHeading.textContent = "Grid Size";
 gridSizeHeading.classList.add("menu-heading");
 menuGrid.appendChild(gridSizeHeading);
 
+const gridSizeText = document.createElement("p");
+gridSizeText.classList.add("menu-grid-text");
+gridSizeText.textContent = "Enter a number between 1 and 100:";
+menuGrid.appendChild(gridSizeText);
+
+const gridSizeInputContainer = document.createElement("div");
+gridSizeInputContainer.classList.add("menu-grid-input-container");
+
+const gridSizeInput = document.createElement("input");
+gridSizeInput.setAttribute("type", "text");
+gridSizeInput.setAttribute("min", 1);
+gridSizeInput.setAttribute("max", 100);
+gridSizeInput.classList.add("menu-grid-input");
+gridSizeInput.value = 16;
+
 const gridSizeBtn = document.createElement("button");
+gridSizeBtn.textContent = "Set";
 gridSizeBtn.classList.add("btn");
 gridSizeBtn.classList.add("btn-grid-size");
-gridSizeBtn.textContent = "Grid Size";
-menuGrid.appendChild(gridSizeBtn);
+
+gridSizeInputContainer.appendChild(gridSizeInput);
+gridSizeInputContainer.appendChild(gridSizeBtn);
+
+menuGrid.appendChild(gridSizeInputContainer)
 
 menu.appendChild(menuColor);
 menu.appendChild(menuGrid);
@@ -76,13 +95,8 @@ clearBtn.addEventListener("click", () => {
 });
 
 gridSizeBtn.addEventListener("click", () => {
-  const size = prompt("Enter a new grid size:");
-  
-  if (!size || isNaN(size)) {
-    alert("Invalid input. Please enter a valid number");
-    return;
-  }
-
+  const size = parseInt(gridSizeInput.value);
   clearGrid();
   populateGrid(grid, parseInt(size));
+  paintGrid(currentColor);
 });

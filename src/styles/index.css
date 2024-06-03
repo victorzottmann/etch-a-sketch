@@ -4,6 +4,7 @@
   --clr-grid: #0000001e;
   --clr-red: #eb5c47;
   --clr-white: #fff;
+  --clr-hover: #f1f1f1;
 
   --board-width: 700px;
   --board-height: 700px;
@@ -11,6 +12,7 @@
   --grid-height: 500px;
 
   --ff-primary: "Mochiy Pop One", sans-serif;
+  --ff-fallback: sans-serif;
 }
 
 * {
@@ -57,6 +59,30 @@
   padding: .8rem 1rem;
   height: 3.5rem;
   width: 100%;
+}
+
+.menu-grid-text {
+  font-size: 1.1rem;
+  font-family: var(--ff-fallback);
+  color: var(--clr-white);
+  margin-bottom: 1rem;
+  padding-block: 0.5rem;
+}
+
+.menu-grid-input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-grid-input {
+  width: 20%;
+  height: 2.5rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  color: var(--clr-red);
+  font-weight: 700;
 }
 
 .board {
@@ -106,4 +132,12 @@
   padding: 8px 16px;
   border: none;
   border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: var(--clr-hover);
+}
+
+.btn-grid-size {
+  width: 50%;
 }
