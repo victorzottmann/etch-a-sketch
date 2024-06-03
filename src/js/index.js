@@ -1,4 +1,4 @@
-import { populateGrid, paintGrid, clearGrid } from "./utils.js";
+import { populateGrid, paintGrid, clearGrid, handleGridSizeChange, hideInvalidInputMessage } from "./utils.js";
 
 const defaultGridSize = 16;
 let currentColor = "#d4d4d4";
@@ -111,45 +111,10 @@ gridSizeInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     gridSizeBtn.click();
     gridSizeInput.blur();
-    handleGridSizeChange();
+    handleGridSizeChange(grid, currentColor);
   }
 });
 
 gridSizeBtn.addEventListener("click", () => {
-  handleGridSizeChange();
+  handleGridSizeChange(grid, currentColor);
 });
-
-function handleGridSizeChange() {
-  const size = parseInt(gridSizeInput.value);
-
-  if (isNaN(size) || size < 1 || size > 100) {
-    showInvalidInputMessage(size);
-    return;
-  }
-
-  hideInvalidInputMessage();
-
-  clearGrid();
-  populateGrid(grid, parseInt(size));
-  paintGrid(currentColor);
-}
-
-function showInvalidInputMessage(size) {
-  const message = document.querySelector("small");
-
-  message.style.display = "block";
-  gridSizeInput.style.backgroundColor = "var(--clr-red)";
-  gridSizeInput.style.color = "var(--clr-white)";
-  
-  if (isNaN(size)) {
-    gridSizeInput.style.backgroundColor = "var(--clr-bg)";
-    message.textContent = "Input cannot be empty!";
-  } else {
-    message.textContent = "WARNING: Value must be within 1 and 100!";
-  }
-}
-
-function hideInvalidInputMessage() {
-  const message = document.querySelector("small");
-  message.style.display = "none";
-}

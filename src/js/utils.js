@@ -28,3 +28,40 @@ export function clearGrid() {
 
   paintGrid(defaultColor);
 }
+
+export function handleGridSizeChange(grid, currentColor) {
+  const input = document.querySelector(".menu-grid-input");
+  const size = parseInt(input.value);
+
+  if (isNaN(size) || size < 1 || size > 100) {
+    showInvalidInputMessage(size);
+    return;
+  }
+
+  hideInvalidInputMessage();
+
+  clearGrid();
+  populateGrid(grid, parseInt(size));
+  paintGrid(currentColor);
+}
+
+export function hideInvalidInputMessage() {
+  const message = document.querySelector("small");
+  message.style.display = "none";
+}
+
+function showInvalidInputMessage(size) {
+  const message = document.querySelector("small");
+  const input = document.querySelector(".menu-grid-input");
+
+  message.style.display = "block";
+  input.style.backgroundColor = "var(--clr-red)";
+  input.style.color = "var(--clr-white)";
+  
+  if (isNaN(size)) {
+    input.style.backgroundColor = "var(--clr-bg)";
+    message.textContent = "Input cannot be empty!";
+  } else {
+    message.textContent = "WARNING: Value must be within 1 and 100!";
+  }
+}
