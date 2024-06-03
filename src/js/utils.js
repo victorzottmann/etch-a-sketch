@@ -18,15 +18,12 @@ export function paintGrid(color) {
 };
 
 export function clearGrid() {
-  const defaultColor = "#d4d4d4";
-
   const colorPicker = document.querySelector(".menu-color-picker");
-  colorPicker.value = defaultColor;
 
   const gridItems = document.querySelectorAll(".grid-item");
   gridItems.forEach(item => item.style.backgroundColor = "var(--clr-white)");
 
-  paintGrid(defaultColor);
+  paintGrid(colorPicker.value);
 }
 
 export function handleGridSizeChange(grid, currentColor) {
