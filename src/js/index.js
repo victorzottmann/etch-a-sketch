@@ -9,19 +9,31 @@ const menu = document.createElement("div");
 menu.classList.add("menu");
 container.appendChild(menu);
 
-const menuColor = document.createElement("div");
-menuColor.classList.add("menu-container");
+const menuToggleGrid = document.createElement("div");
+menuToggleGrid.classList.add("menu-container");
+menuToggleGrid.classList.add("grid-switch");
 
-const colorHeading = document.createElement("p");
-colorHeading.textContent = "Color";
-colorHeading.classList.add("menu-heading");
-menuColor.appendChild(colorHeading);
+const toggleGridHeading = document.createElement("p");
+toggleGridHeading.textContent = "Toggle Grid";
+toggleGridHeading.classList.add("menu-heading");
 
-const colorPicker = document.createElement("input");
-colorPicker.setAttribute("type", "color");
-colorPicker.classList.add("menu-color-picker");
-colorPicker.value = currentColor;
-menuColor.appendChild(colorPicker);
+const switchLabel = document.createElement("label");
+switchLabel.classList.add("switch");
+
+const switchInput = document.createElement("input");
+switchInput.setAttribute("type", "checkbox");
+switchInput.classList.add("switch-input");
+switchInput.checked = true;
+
+const switchSlider = document.createElement("span");
+switchSlider.classList.add("slider");
+switchSlider.classList.add("round");
+
+switchLabel.appendChild(switchInput);
+switchLabel.appendChild(switchSlider);
+
+menuToggleGrid.appendChild(toggleGridHeading);
+menuToggleGrid.appendChild(switchLabel);
 
 const menuGrid = document.createElement("div");
 menuGrid.classList.add("menu-container");
@@ -61,8 +73,23 @@ invalidInputMessage.classList.add("invalid-input-message");
 menuGrid.appendChild(gridSizeInputContainer);
 menuGrid.appendChild(invalidInputMessage);
 
-menu.appendChild(menuColor);
+const menuColor = document.createElement("div");
+menuColor.classList.add("menu-container");
+
+const colorHeading = document.createElement("p");
+colorHeading.textContent = "Color";
+colorHeading.classList.add("menu-heading");
+menuColor.appendChild(colorHeading);
+
+const colorPicker = document.createElement("input");
+colorPicker.setAttribute("type", "color");
+colorPicker.classList.add("menu-color-picker");
+colorPicker.value = currentColor;
+menuColor.appendChild(colorPicker);
+
+menu.appendChild(menuToggleGrid);
 menu.appendChild(menuGrid);
+menu.appendChild(menuColor);
 
 const board = document.createElement("div");
 board.classList.add("board");
@@ -116,4 +143,17 @@ gridSizeInput.addEventListener("keydown", (e) => {
 
 gridSizeBtn.addEventListener("click", () => {
   handleGridSizeChange(grid, currentColor);
+});
+
+switchInput.addEventListener("change", (e) => {
+  const gridItems = document.querySelectorAll(".grid-item");
+  const isChecked = e.target.checked;
+
+  gridItems.forEach(item => {
+    if (!isChecked) {
+      item.classList.remove("grid-on");
+    } else {
+      item.classList.add("grid-on");
+    }
+  })
 });

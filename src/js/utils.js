@@ -2,6 +2,7 @@ export function populateGrid(container, size = 16) {
   for (let i = 0; i < size * size; i++) {
     const gridItem = document.createElement("div");
     gridItem.classList.add("grid-item");
+    gridItem.classList.add("grid-on");
     container.appendChild(gridItem);
   }
 
