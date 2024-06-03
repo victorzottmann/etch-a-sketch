@@ -75,9 +75,10 @@ menuGrid.appendChild(invalidInputMessage);
 
 const menuColor = document.createElement("div");
 menuColor.classList.add("menu-container");
+menuColor.classList.add("menu-color");
 
 const colorHeading = document.createElement("p");
-colorHeading.textContent = "Color";
+colorHeading.textContent = "Brush Color";
 colorHeading.classList.add("menu-heading");
 menuColor.appendChild(colorHeading);
 
