@@ -9,7 +9,7 @@ menu.classList.add("menu");
 container.appendChild(menu);
 
 const menuColor = document.createElement("div");
-menuColor.classList.add("menu-color")
+menuColor.classList.add("menu-container");
 
 const colorHeading = document.createElement("p");
 colorHeading.textContent = "Color";
@@ -22,7 +22,22 @@ colorPicker.classList.add("menu-color-picker");
 colorPicker.value = currentColor;
 menuColor.appendChild(colorPicker);
 
+const menuGrid = document.createElement("div");
+menuGrid.classList.add("menu-container");
+
+const gridSizeHeading = document.createElement("p");
+gridSizeHeading.textContent = "Grid Size";
+gridSizeHeading.classList.add("menu-heading");
+menuGrid.appendChild(gridSizeHeading);
+
+const gridSizeBtn = document.createElement("button");
+gridSizeBtn.classList.add("btn");
+gridSizeBtn.classList.add("btn-grid-size");
+gridSizeBtn.textContent = "Grid Size";
+menuGrid.appendChild(gridSizeBtn);
+
 menu.appendChild(menuColor);
+menu.appendChild(menuGrid);
 
 const board = document.createElement("div");
 board.classList.add("board");
@@ -37,12 +52,6 @@ grid.classList.add("grid");
 
 const buttons = document.createElement("div");
 buttons.classList.add("buttons");
-
-const gridSizeBtn = document.createElement("button");
-gridSizeBtn.classList.add("btn");
-gridSizeBtn.classList.add("btn-grid-size");
-gridSizeBtn.textContent = "Grid Size";
-buttons.appendChild(gridSizeBtn);
 
 const clearBtn = document.createElement("button");
 clearBtn.classList.add("btn");

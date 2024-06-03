@@ -35,10 +35,7 @@
   border-radius: 30px;
 }
 
-.menu-color {
-  font-family: var(--ff-primary);
-  font-size: 1.5rem;
-  color: var(--clr-white);
+.menu-container {
   width: 100%;
   padding: 2rem;
   display: flex;
@@ -46,6 +43,9 @@
 }
 
 .menu-heading {
+  font-family: var(--ff-primary);
+  font-size: 1.5rem;
+  color: var(--clr-white);
   margin-bottom: 1rem;
 }
 
@@ -93,7 +93,7 @@
 
 .buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: var(--grid-width);
 }
 
