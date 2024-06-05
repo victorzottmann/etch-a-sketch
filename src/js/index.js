@@ -13,14 +13,25 @@ const menuToggleGrid = document.createElement("div");
 menuToggleGrid.classList.add("menu-container");
 menuToggleGrid.classList.add("grid-switch");
 
+const menuGridHeadingContainer = document.createElement("div");
+menuGridHeadingContainer.classList.add("menu-container");
+menuGridHeadingContainer.classList.add("heading-wrapper");
+
 const toggleGridHeading = document.createElement("p");
 toggleGridHeading.textContent = "Toggle Grid";
 toggleGridHeading.classList.add("menu-heading");
 
-const gridToggleSwitch = createSwitch(true);
+const gridToggleSwitch = createSwitch(true, "grid-toggle");
 
-menuToggleGrid.appendChild(toggleGridHeading);
-menuToggleGrid.appendChild(gridToggleSwitch);
+menuGridHeadingContainer.appendChild(toggleGridHeading);
+menuGridHeadingContainer.appendChild(gridToggleSwitch);
+
+const toggleGridText = document.createElement("p");
+toggleGridText.textContent = "Press G or click on the switch to view Grid.";
+toggleGridText.classList.add("menu-text");
+
+menuToggleGrid.appendChild(menuGridHeadingContainer);
+menuToggleGrid.appendChild(toggleGridText);
 
 const menuGrid = document.createElement("div");
 menuGrid.classList.add("menu-container");
@@ -31,7 +42,7 @@ gridSizeHeading.classList.add("menu-heading");
 menuGrid.appendChild(gridSizeHeading);
 
 const gridSizeText = document.createElement("p");
-gridSizeText.classList.add("menu-grid-text");
+gridSizeText.classList.add("menu-text");
 gridSizeText.textContent = "Enter a number between 1 and 100:";
 menuGrid.appendChild(gridSizeText);
 
@@ -95,7 +106,7 @@ menuRainbow.appendChild(menuRainbowHeadingContainer);
 
 const rainbowText = document.createElement("p");
 rainbowText.textContent = "Press R or click on the switch to toggle Rainbow Mode.";
-rainbowText.classList.add("menu-rainbow-text");
+rainbowText.classList.add("menu-text");
 
 menuRainbow.appendChild(rainbowText);
 
@@ -158,30 +169,33 @@ gridSizeBtn.addEventListener("click", () => {
   handleGridSizeChange(grid, currentColor);
 });
 
-gridToggleSwitch.addEventListener("change", (e) => {
+function handleGridToggle() {
+  const gridToggleSwitch = document.querySelector(".grid-toggle");
   const gridItems = document.querySelectorAll(".grid-item");
-  const isChecked = e.target.checked;
 
+  gridToggleSwitch.checked = !gridToggleSwitch.checked;
+  
+  const isChecked = gridToggleSwitch.checked;
   gridItems.forEach(item => {
     if (!isChecked) {
       item.classList.remove("grid-on");
     } else {
       item.classList.add("grid-on");
     }
-  })
-});
+  });
+}
 
-rainbowToggleSwitch.addEventListener("change", (e) => {
-  const isChecked = e.target.checked;
-
-  if (isChecked) {
-    
-  }
-});
+function handleRainbowToggle() {
+  const rainbowToggleSwitch = document.querySelector(".rainbow-toggle");
+  rainbowToggleSwitch.checked = !rainbowToggleSwitch.checked;
+}
 
 document.addEventListener("keydown", (e) => {
-  const rainbowToggleSwitch = document.querySelector(".rainbow-toggle");
+  if ((e.key === 'g' || e.key === 'G')) {
+    handleGridToggle();
+  }
+
   if ((e.key === 'r' || e.key === 'R')) {
-    rainbowToggleSwitch.checked = !rainbowToggleSwitch.checked;
+    handleRainbowToggle();
   }
 });

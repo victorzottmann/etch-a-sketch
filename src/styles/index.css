@@ -70,19 +70,18 @@
   border-radius: 1px;
 }
 
-.menu-grid-text,
-.menu-rainbow-text {
+.menu-text {
   font-size: 1.1rem;
   font-family: var(--ff-fallback);
   color: var(--clr-white);
   padding-top: 1.2rem;
-  padding-bottom: 1.5rem;
   line-height: 1.5;
 }
 
 .menu-grid-input-container {
   display: flex;
   justify-content: space-between;
+  padding-top: 1rem;
 }
 
 .menu-grid-input {
@@ -112,7 +111,6 @@
 
 .menu-container.grid-switch,
 .menu-container.menu-rainbow-toggle {
-  flex-direction: row;
   justify-content: space-between;
 }
 
