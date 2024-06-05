@@ -1,4 +1,4 @@
-import { populateGrid, paintGrid, clearGrid, handleGridSizeChange, hideInvalidInputMessage, createSwitch } from "./utils.js";
+import { populateGrid, paintGrid, clearGrid, handleGridSizeChange, hideInvalidInputMessage, createSwitch, handleGridToggle, handleRainbowToggle } from "./utils.js";
 
 const defaultGridSize = 16;
 let currentColor = "#d4d4d4";
@@ -169,41 +169,8 @@ gridSizeBtn.addEventListener("click", () => {
   handleGridSizeChange(grid, currentColor);
 });
 
-function handleGridToggle() {
-  const gridToggleSwitch = document.querySelector(".grid-toggle");
-// gridToggleSwitch.addEventListener("change", (e) => {
-//   const gridItems = document.querySelectorAll(".grid-item");
-//   const isChecked = e.target.checked;
-  
-//   gridItems.forEach(item => {
-//     if (!isChecked) {
-//       item.classList.remove("grid-on");
-//     } else {
-//       item.classList.add("grid-on");
-//     }
-//   });
-// });
 
-function handleGridToggle() {
-  const gridToggleSwitch = document.querySelector(".grid-toggle");
-  const gridItems = document.querySelectorAll(".grid-item");
-
-  gridToggleSwitch.checked = !gridToggleSwitch.checked;
-  
-  const isChecked = gridToggleSwitch.checked;
-  gridItems.forEach(item => {
-    if (!isChecked) {
-      item.classList.remove("grid-on");
-    } else {
-      item.classList.add("grid-on");
-    }
-  });
-}
-
-function handleRainbowToggle() {
-  const rainbowToggleSwitch = document.querySelector(".rainbow-toggle");
-  rainbowToggleSwitch.checked = !rainbowToggleSwitch.checked;
-}
+gridToggleSwitch.addEventListener("click", handleGridToggle);
 
 document.addEventListener("keydown", (e) => {
   if ((e.key === 'g' || e.key === 'G')) {

@@ -100,3 +100,24 @@ export function createSwitch(isChecked, additionalInputClass) {
 
   return switchLabel;
 }
+
+export function handleGridToggle() {
+  const gridToggleSwitch = document.querySelector(".grid-toggle");
+  const gridItems = document.querySelectorAll(".grid-item");
+
+  gridToggleSwitch.checked = !gridToggleSwitch.checked;
+  
+  const isChecked = gridToggleSwitch.checked;
+  gridItems.forEach(item => {
+    if (!isChecked) {
+      item.classList.remove("grid-on");
+    } else {
+      item.classList.add("grid-on");
+    }
+  });
+}
+
+export function handleRainbowToggle() {
+  const rainbowToggleSwitch = document.querySelector(".rainbow-toggle");
+  rainbowToggleSwitch.checked = !rainbowToggleSwitch.checked;
+}
