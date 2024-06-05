@@ -169,6 +169,8 @@ gridSizeBtn.addEventListener("click", () => {
   handleGridSizeChange(grid, currentColor);
 });
 
+function handleGridToggle() {
+  const gridToggleSwitch = document.querySelector(".grid-toggle");
 // gridToggleSwitch.addEventListener("change", (e) => {
 //   const gridItems = document.querySelectorAll(".grid-item");
 //   const isChecked = e.target.checked;
