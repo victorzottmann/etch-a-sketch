@@ -1,16 +1,12 @@
 :root {
-  --clr-bg: #23395b;
-  --clr-blue: #335383;
+  --clr-bg: #1f324f;
+  --clr-blue: #2b476f;
   --clr-grid: #0000001e;
   --clr-red: #eb5c47;
-  --clr-dark-red: #cf513d;
   --clr-white: #fff;
   --clr-hover: #f1f1f1;
 
-  --border-grid-on: 1px solid var(--clr-grid);
-  --border-grid-off: 1px solid var(--clr-white);
-
-  --board-width: 700px;
+  --board-width: 580px;
   --board-height: 700px;
   --grid-width: 500px;
   --grid-height: 500px;
@@ -74,12 +70,14 @@
   border-radius: 1px;
 }
 
-.menu-grid-text {
+.menu-grid-text,
+.menu-rainbow-text {
   font-size: 1.1rem;
   font-family: var(--ff-fallback);
   color: var(--clr-white);
   padding-top: 1.2rem;
   padding-bottom: 1.5rem;
+  line-height: 1.5;
 }
 
 .menu-grid-input-container {

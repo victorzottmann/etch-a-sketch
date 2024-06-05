@@ -11,9 +11,16 @@ export function populateGrid(container, size = 16) {
 
 export function paintGrid(color) {
   const gridItems = document.querySelectorAll(".grid-item");
+  
   gridItems.forEach(item => {
-    item.addEventListener("mouseover", () => {
-      item.style.backgroundColor = color;
+    item.addEventListener("mouseover", (e) => {
+      const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+
+      if (e.shiftKey) {
+        item.style.backgroundColor = randomColor;
+      } else {
+        item.style.backgroundColor = color;
+      }
     });
   });
 };

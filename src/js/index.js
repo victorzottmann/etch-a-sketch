@@ -88,9 +88,24 @@ colorPicker.classList.add("menu-color-picker");
 colorPicker.value = currentColor;
 menuColor.appendChild(colorPicker);
 
+const menuRainbow = document.createElement("div");
+menuRainbow.classList.add("menu-container");
+menuRainbow.classList.add("rainbow-mode");
+
+const rainbowHeading = document.createElement("p");
+rainbowHeading.textContent = "Rainbow Mode";
+rainbowHeading.classList.add("menu-heading");
+menuRainbow.appendChild(rainbowHeading);
+
+const rainbowText = document.createElement("p");
+rainbowText.textContent = "Hold the Shift key to enable Rainbow Mode.";
+rainbowText.classList.add("menu-rainbow-text");
+menuRainbow.appendChild(rainbowText);
+
 menu.appendChild(menuToggleGrid);
 menu.appendChild(menuGrid);
 menu.appendChild(menuColor);
+menu.appendChild(menuRainbow);
 
 const board = document.createElement("div");
 board.classList.add("board");
@@ -158,3 +173,5 @@ switchInput.addEventListener("change", (e) => {
     }
   })
 });
+
+
