@@ -1,4 +1,4 @@
-import { populateGrid, paintGrid, clearGrid, handleGridSizeChange, hideInvalidInputMessage } from "./utils.js";
+import { populateGrid, paintGrid, clearGrid, handleGridSizeChange, hideInvalidInputMessage, createSwitch } from "./utils.js";
 
 const defaultGridSize = 16;
 let currentColor = "#d4d4d4";
@@ -17,23 +17,10 @@ const toggleGridHeading = document.createElement("p");
 toggleGridHeading.textContent = "Toggle Grid";
 toggleGridHeading.classList.add("menu-heading");
 
-const switchLabel = document.createElement("label");
-switchLabel.classList.add("switch");
-
-const switchInput = document.createElement("input");
-switchInput.setAttribute("type", "checkbox");
-switchInput.classList.add("switch-input");
-switchInput.checked = true;
-
-const switchSlider = document.createElement("span");
-switchSlider.classList.add("slider");
-switchSlider.classList.add("round");
-
-switchLabel.appendChild(switchInput);
-switchLabel.appendChild(switchSlider);
+const gridToggleSwitch = createSwitch(true);
 
 menuToggleGrid.appendChild(toggleGridHeading);
-menuToggleGrid.appendChild(switchLabel);
+menuToggleGrid.appendChild(gridToggleSwitch);
 
 const menuGrid = document.createElement("div");
 menuGrid.classList.add("menu-container");
@@ -90,16 +77,26 @@ menuColor.appendChild(colorPicker);
 
 const menuRainbow = document.createElement("div");
 menuRainbow.classList.add("menu-container");
-menuRainbow.classList.add("rainbow-mode");
+menuRainbow.classList.add("menu-rainbow");
+
+const menuRainbowHeadingContainer = document.createElement("div");
+menuRainbowHeadingContainer.classList.add("menu-container");
+menuRainbowHeadingContainer.classList.add("heading-wrapper");
 
 const rainbowHeading = document.createElement("p");
 rainbowHeading.textContent = "Rainbow Mode";
 rainbowHeading.classList.add("menu-heading");
-menuRainbow.appendChild(rainbowHeading);
+
+const rainbowToggleSwitch = createSwitch(false, "rainbow-toggle");
+
+menuRainbowHeadingContainer.appendChild(rainbowHeading);
+menuRainbowHeadingContainer.appendChild(rainbowToggleSwitch);
+menuRainbow.appendChild(menuRainbowHeadingContainer);
 
 const rainbowText = document.createElement("p");
-rainbowText.textContent = "Hold the Shift key to enable Rainbow Mode.";
+rainbowText.textContent = "Press R or click on the switch to toggle Rainbow Mode.";
 rainbowText.classList.add("menu-rainbow-text");
+
 menuRainbow.appendChild(rainbowText);
 
 menu.appendChild(menuToggleGrid);
@@ -161,7 +158,7 @@ gridSizeBtn.addEventListener("click", () => {
   handleGridSizeChange(grid, currentColor);
 });
 
-switchInput.addEventListener("change", (e) => {
+gridToggleSwitch.addEventListener("change", (e) => {
   const gridItems = document.querySelectorAll(".grid-item");
   const isChecked = e.target.checked;
 
@@ -174,4 +171,17 @@ switchInput.addEventListener("change", (e) => {
   })
 });
 
+rainbowToggleSwitch.addEventListener("change", (e) => {
+  const isChecked = e.target.checked;
 
+  if (isChecked) {
+    
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  const rainbowToggleSwitch = document.querySelector(".rainbow-toggle");
+  if ((e.key === 'r' || e.key === 'R')) {
+    rainbowToggleSwitch.checked = !rainbowToggleSwitch.checked;
+  }
+});

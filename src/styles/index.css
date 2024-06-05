@@ -110,7 +110,8 @@
   color: var(--clr-white);
 }
 
-.menu-container.grid-switch {
+.menu-container.grid-switch,
+.menu-container.menu-rainbow-toggle {
   flex-direction: row;
   justify-content: space-between;
 }
@@ -168,6 +169,18 @@
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.menu-container.heading-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+.rainbow-toggle:checked {
+  background-color: var(--clr-red);
 }
 
 .board {

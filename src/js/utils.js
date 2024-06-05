@@ -9,17 +9,23 @@ export function populateGrid(container, size = 16) {
   container.style.setProperty("--grid-size", size);
 }
 
-export function paintGrid(color) {
-  const gridItems = document.querySelectorAll(".grid-item");
-  
-  gridItems.forEach(item => {
-    item.addEventListener("mouseover", (e) => {
-      const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+function getRandomColor() {
+  return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
 
-      if (e.shiftKey) {
+export function paintGrid(selectedColor) {
+  const gridItems = document.querySelectorAll(".grid-item");
+  const rainbowToggleSwitch = document.querySelector(".rainbow-toggle");
+
+  gridItems.forEach(item => {
+    item.addEventListener("mouseover", () => {
+      const isChecked = rainbowToggleSwitch.checked;
+
+      if (isChecked) {
+        const randomColor = getRandomColor();
         item.style.backgroundColor = randomColor;
       } else {
-        item.style.backgroundColor = color;
+        item.style.backgroundColor = selectedColor;
       }
     });
   });
@@ -69,4 +75,28 @@ function showInvalidInputMessage(size) {
   } else {
     message.textContent = "WARNING: Value must be within 1 and 100!";
   }
+}
+
+export function createSwitch(isChecked, additionalInputClass) {
+  const switchLabel = document.createElement("label");
+  switchLabel.classList.add("switch");
+
+  const switchInput = document.createElement("input");
+  switchInput.setAttribute("type", "checkbox");
+  switchInput.classList.add("switch-input");
+
+  if (additionalInputClass) {
+    switchInput.classList.add(additionalInputClass);
+  }
+
+  switchInput.checked = isChecked;
+
+  const switchSlider = document.createElement("span");
+  switchSlider.classList.add("slider");
+  switchSlider.classList.add("round");
+
+  switchLabel.appendChild(switchInput);
+  switchLabel.appendChild(switchSlider);
+
+  return switchLabel;
 }
