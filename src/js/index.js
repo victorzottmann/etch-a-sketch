@@ -5,7 +5,7 @@ let currentColor = "#d4d4d4";
 
 const container = document.querySelector(".container");
 
-const menu = document.createElement("div");
+const menu = document.createElement("aside");
 menu.classList.add("menu");
 container.appendChild(menu);
 
